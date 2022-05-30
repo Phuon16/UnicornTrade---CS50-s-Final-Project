@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            {{ quote.name }} ({{ quote.symbol }}) 's current price: {{ quote.price | usdt }}
+        </div>
+        <h3>Lastest 30 days</h3>
+        <div id='chart' class='chart'”></div>
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <script type='text/javascript'>
+            var graphs = {{charted | safe}};
+            Plotly.plot('chart',graphs,{});
+        </script>
+
+{% endblock %}

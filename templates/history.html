@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <main class="container-fluid text-center">
+        <table class="table tablestriped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-end">Quantity</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">Transaction</th>
+                </tr>
+            </thead>
+            <tbody class="text-end">
+                {% for value in values %}
+                    <tr>
+                        <td class="text-start">{{ value.symbol }}</td>
+                        <td class="text-end">{{ value.shares }}</td>
+                        <td class="text-end">{{ value.price | usdt }}</td>
+                        <td class="text-end">{{ value.buydate }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

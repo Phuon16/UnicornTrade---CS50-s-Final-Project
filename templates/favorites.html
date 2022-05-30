@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Favorites
+{% endblock %}
+
+{% block main %}
+    <form method="post" action="/favorites">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">ADD TO FAVORITES</button>
+    </form>
+    <div></div>
+    <table class="table tablestriped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">24h Volume</th>
+                <th class="text-end">Market Capital</th>
+                <th class="text-end">Fully Diluted Market Capital</th>
+            </tr>
+        </thead>
+        <tbody class="text-end">
+            {% for value in values %}
+                <tr>
+                    <td class="text-start">{{ value.symbol }}</td>
+                    <td class="text-start">{{ value.name }}</td>
+                    <td class="text-end">{{ value.price | usdt }}</td>
+                    <td class="text-end">{{ value.volumne }}</td>
+                    <td class="text-end">{{ value.marketcap }}</td>
+                    <td class="text-end">{{ value.fdv }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
